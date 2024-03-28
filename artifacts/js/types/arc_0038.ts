@@ -22,15 +22,13 @@ import {
   LeoAddress
 } from "@doko-js/core";
 
-export interface token {
-  owner: LeoAddress;
-  amount: bigint;
-  _nonce: bigint;
+export interface withdrawal_state {
+  microcredits: bigint;
+  claim_block: number;
 }
 
-export const leoTokenSchema = z.object({
-  owner: leoAddressSchema,
-  amount: leoU64Schema,
-  _nonce: leoGroupSchema,
+export const leoWithdrawal_stateSchema = z.object({
+  microcredits: leoU64Schema,
+  claim_block: leoU32Schema,
 });
-export type tokenLeo = z.infer < typeof leoTokenSchema > ;
+export type withdrawal_stateLeo = z.infer < typeof leoWithdrawal_stateSchema > ;
